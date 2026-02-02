@@ -10,15 +10,22 @@ public class ArmstrongMain {
 			System.out.println("Enter the number");
 			int destination = sc.nextInt();
 
+			int count = 0;
+
 			for (int i = 1; i < destination; i++) {
 
-				getArmstrong(i);
+				if (getArmstrong(i)) {
+					count++;
+					System.out.println(i);
+				}
 			}
+
+			System.out.println("Total Armstrong numbers: " + count);
 		}
 
 	}
 
-	private static void getArmstrong(int number) {
+	private static boolean getArmstrong(int number) {
 
 		int temp = 0, sum = 0, ref = 0;
 
@@ -34,9 +41,7 @@ public class ArmstrongMain {
 			System.out.println("Number should be greater than 0");
 		}
 
-		if (temp == sum) {
-			System.out.println("Number is armstrong  " + sum);
-		}
+		return temp == sum;
 	}
 
 }

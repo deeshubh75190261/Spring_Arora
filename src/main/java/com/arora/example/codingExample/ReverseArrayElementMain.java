@@ -109,12 +109,26 @@ public class ReverseArrayElementMain {
 		for (int k = syntense.length() - 1; k >= 0; k--) {
 			ans1 = ans1 + syntense.charAt(k);
 		}
+		int d, e;
+		String temp2 = "";
+		for (d = 0, e = arr2.length - 1; d < e; d++, e--) {
+			temp2 = arr2[d];
+			arr2[d] = arr2[e];
+			arr2[e] = temp2;
+
+		}
 
 		System.out.println("Reverse String is : " + ans1);
 
 		System.out.println("Reverse String is : " + ans);
 
-		System.out.println("*******************************");
+		System.out.print("Reverse String is : ");
+
+		for (String st : arr2) {
+			System.out.print(st + " ");
+		}
+
+		System.out.println("\n*******************************");
 
 		String str = "abc#de@f";
 

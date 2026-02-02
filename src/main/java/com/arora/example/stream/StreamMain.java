@@ -95,6 +95,12 @@ public class StreamMain {
 
 		System.out.println("************************************");
 
+		Integer thirdHighest = marks.stream().sorted((a, b) -> b.compareTo(a)).skip(2).findFirst().get();
+
+		System.out.println("Third highest marks is : " + thirdHighest);
+
+		System.out.println("************************************");
+
 		List<String> strList = Arrays.asList("A", "AAA", "BB", "BBBBB", "AAAAAA");
 
 		List<String> strSortList = strList.stream().sorted((a, b) -> Integer.compare(b.length(), a.length()))

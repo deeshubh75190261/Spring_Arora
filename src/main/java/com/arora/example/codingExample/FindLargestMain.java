@@ -3,6 +3,7 @@ package com.arora.example.codingExample;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,6 +63,10 @@ public class FindLargestMain {
 		int nLargest = arr2[n - 1]; // Access the nth largest element
 
 		System.out.println("The " + n + "th largest number is: " + nLargest);
+
+		int thirdLargest = Arrays.stream(arr2).boxed().sorted((a, b) -> b.compareTo(a)).skip(2).findFirst().get();
+
+		System.out.println("The " + n + "th largest number iss: " + thirdLargest);
 
 		System.out.println("*********************************************************");
 
@@ -123,6 +128,21 @@ public class FindLargestMain {
 		System.out.println("Sort array is         : " + Arrays.toString(arr4));
 
 		System.out.println("Found " + findNum + "rd largest is  : " + arr4[arr4.length - findNum]);
+
+		int thirdHighest = Arrays.stream(arr4).boxed().sorted((a, b) -> b.compareTo(a)).skip(2).findFirst().get();
+
+		System.out.println("Found " + findNum + "rd largest is  : " + thirdHighest);
+
+		System.out.println("****************************************");
+
+		Integer[] arr5 = { 4, 8, 9, 7, 6, 3, 1, 2, 5 };
+
+		List<Integer> sortArray = Arrays.stream(arr5).sorted((a, b) -> Integer.compare(b, a))
+				.collect(Collectors.toList());
+
+		System.out.println(sortArray + "\n");
+
+		sortArray.forEach(System.out::println);
 
 	}
 

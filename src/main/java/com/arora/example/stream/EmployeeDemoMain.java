@@ -41,6 +41,12 @@ public class EmployeeDemoMain {
 		EmployeeDemo highestEmployee2 = list.stream().max(Comparator.comparingDouble(EmployeeDemo::getSalary)).get();
 		System.out.println("Highest employee : " + highestEmployee2);
 
+		System.out.println("-------------------------------------");
+
+		EmployeeDemo highestEmployee3 = list.stream().sorted((a, b) -> Double.compare(b.getSalary(), a.getSalary()))
+				.findFirst().get();
+		System.out.println("Highest employee : " + highestEmployee3);
+
 		System.out.println("\n**************************************************************************");
 
 		List<EmployeeDemo> sortedList = list.stream().sorted((a, b) -> Double.compare(b.getSalary(), a.getSalary()))
@@ -94,14 +100,21 @@ public class EmployeeDemoMain {
 				.collect(Collectors.groupingBy(EmployeeDemo::getGender, Collectors.counting()));
 		System.out.println(genderCount);
 
+		System.out.println("-------------------------------------");
+
+		Map<String, Long> genderCount1 = list.stream()
+				.collect(Collectors.groupingBy(emp -> emp.getGender(), Collectors.counting()));
+
+		System.out.println(genderCount1);
+
 		System.out.println("\n**************************************************************************");
 
 //		Find out in gender highest salaried employee 
 
 		Map<String, Optional<EmployeeDemo>> highestSalariedEmp = list.stream().collect(Collectors
-				.groupingBy(EmployeeDemo::getGender, Collectors.maxBy(Comparator.comparing(emp->emp.getSalary()))));
+				.groupingBy(EmployeeDemo::getGender, Collectors.maxBy(Comparator.comparing(emp -> emp.getSalary()))));
 		System.out.println(highestSalariedEmp);
-		
+
 		System.out.println("\n**************************************************************************");
 
 		highestSalariedEmp.forEach((a, b) -> System.out.println("Gender : " + a + "  Employee : " + b.get()));
