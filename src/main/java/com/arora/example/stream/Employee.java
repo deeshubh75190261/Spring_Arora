@@ -1,6 +1,7 @@
 package com.arora.example.stream;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
@@ -92,7 +93,7 @@ public class Employee {
 		// Without method reference
 
 		Map<String, List<Employee>> employeeGroupByGender = employeeList.stream()
-				.collect(Collectors.groupingBy(employee -> employee.getGender()));
+				.collect(Collectors.groupingBy(employee -> employee.getGender(), Collectors.toList()));
 		employeeGroupByGender.forEach((key, value) -> System.out.println(key + " - " + value));
 
 		System.out.println("*****************************************************************************************");
@@ -168,9 +169,10 @@ public class Employee {
 
 		Map<String, List<Employee>> employees1 = employeeList.stream()
 				.collect(Collectors.groupingBy(empl -> empl.getDeptId()));
-		
+
 		employees1.forEach((k, v) -> System.out.println(k + " - " + v));
-		System.out.println("**************************************gg***************************************************");
+		System.out
+				.println("**************************************gg***************************************************");
 
 //		10. Find out the highest experienced employees in the organization.
 
@@ -233,12 +235,20 @@ public class Employee {
 
 		System.out.println("*****************************************************************************************");
 
-		Map<String, Optional<Employee>> departmenaltExperiencedPeople = employeeList.stream().collect(Collectors
-				.groupingBy(Employee::getDeptId, Collectors.maxBy((a, b) -> Integer.compare(a.getYearOfJoining(), b.getYearOfJoining()))));
+		Map<String, Optional<Employee>> departmenaltExperiencedPeople = employeeList.stream()
+				.collect(Collectors.groupingBy(Employee::getDeptId,
+						Collectors.maxBy((a, b) -> Integer.compare(a.getYearOfJoining(), b.getYearOfJoining()))));
 
 		departmenaltExperiencedPeople
 				.forEach((k, v) -> System.out.println("Depart : " + k + "\nEmployee : " + v.get() + "\n"));
 
+		System.out.println("*****************************************************************************************");
+
+		Map<String, Optional<Employee>> secHighEmpInDept = employeeList.stream()
+				.collect(Collectors.groupingBy(empp -> empp.getDeptId(),
+						Collectors.collectingAndThen(Collectors.toList(), list -> list.stream()
+								.sorted((a, b) -> Double.compare(b.getSalary(), a.getSalary())).skip(1).findFirst())));
+		secHighEmpInDept.forEach((k, v) -> System.out.println("Depart : " + k + "\nEmployee : " + v.get() + "\n"));
 	}
 
 }

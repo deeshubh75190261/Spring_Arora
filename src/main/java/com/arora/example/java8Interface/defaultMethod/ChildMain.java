@@ -20,6 +20,8 @@ public class ChildMain extends Child1 implements Interface1 {
 
 	@Override
 	public void getSum() {
+
+		System.out.println("From ChildMain class");
 	}
 
 }
