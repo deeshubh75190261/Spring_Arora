@@ -1,6 +1,5 @@
 package com.arora.example.collection;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -123,17 +122,17 @@ public class ListDemoMain {
 				.collect(Collectors.toList());
 
 		System.out.println("result : " + result); // Output: [H, e, l, l, o, W, o, r, l, d]
+		
+		System.out.println("==========================================================");
 
 		List<String[]> result1 = words.stream().map(word -> word.split("")).collect(Collectors.toList());
 
-		System.out.println("result1 : " + result1);
-
 		for (String[] str : result1) {
 
-			String[] strArr = str;
-
-			System.out.println(Arrays.toString(strArr));
+			System.out.println(Arrays.toString(str));
 		}
+		
+		System.out.println("==========================================================");
 
 		List<String> result2 = words.stream().flatMap(word -> Arrays.stream(word.split(",")))
 				.collect(Collectors.toList());

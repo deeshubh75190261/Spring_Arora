@@ -6,7 +6,7 @@ public class ArraySum {
 
 //		Output should be 6 6 6 6
 
-		int[] intArray = { 15, 123, 96, 1050 };
+		int[] intArray = { 15, 123, 96, 1050, 56 };
 
 		for (Integer number : intArray) {
 			int sum = 0;

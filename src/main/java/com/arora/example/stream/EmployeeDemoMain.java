@@ -46,6 +46,12 @@ public class EmployeeDemoMain {
 		EmployeeDemo highestEmployee3 = list.stream().sorted((a, b) -> Double.compare(b.getSalary(), a.getSalary()))
 				.findFirst().get();
 		System.out.println("Highest employee : " + highestEmployee3);
+		
+		System.out.println("-------------------------------------");
+		
+		EmployeeDemo highestEmployee4 = list.stream().sorted((a, b) -> b.getSalary().compareTo(a.getSalary()))
+				.findFirst().get();
+		System.out.println("Highest employee : " + highestEmployee4);
 
 		System.out.println("\n**************************************************************************");
 
@@ -70,7 +76,7 @@ public class EmployeeDemoMain {
 		Optional<EmployeeDemo> secondHighestSalary1 = list.stream()
 				.sorted((a, b) -> Double.compare(b.getSalary(), a.getSalary())).skip(1).findFirst();
 		if (secondHighestSalary1.isPresent()) {
-			System.out.println("Optional Second highest salaried : " + secondHighestSalary1);
+			System.out.println("Optional Second highest salaried : " + secondHighestSalary1.get());
 
 		}
 
@@ -93,6 +99,12 @@ public class EmployeeDemoMain {
 		Optional<EmployeeDemo> seionrOnJoiningDate1 = list.stream()
 				.min(Comparator.comparing(EmployeeDemo::getJoiningDate));
 		seionrOnJoiningDate1.ifPresent(System.out::println);
+		
+		System.out.println("-------------------------------------");
+
+		Optional<EmployeeDemo> seionrOnJoiningDate2 = list.stream()
+				.max((a,b)->b.getJoiningDate().compareTo(a.getJoiningDate()));
+		seionrOnJoiningDate2.ifPresent(System.out::println);
 
 		System.out.println("\n**************************************************************************");
 

@@ -12,27 +12,31 @@ public class CountSwapMain {
 
 //		Q. Find the missing number in an array?
 
-//		int total;
-//		int[] numbers = new int[]{1, 2, 3, 4, 6, 7};
-//		total = 7;
-//		int expected_sum = total * ((total + 1) / 2);
-//		int num_sum = 0;
-//		for (int i: numbers) {
-//		num_sum += i;
-//		}
-//		System.out.print( expected_sum - num_sum );
+		int total;
+		int[] numbers = new int[] { 1, 2, 3, 4, 6, 7 };
+		total = 7;
+		int expected_sum = total * ((total + 1) / 2);
+		int num_sum = 0;
+		for (int i : numbers) {
+			num_sum += i;
+		}
+		System.out.println(expected_sum - num_sum);
+		
+		System.out.println("*******************************");
 
 //		Q. Write a java program to swap two string variables without using temp variable?		
 
-//		String a = "Hello";
-//		String b = "World";
-//
-//		System.out.println("Strings before swap: a = " + a + " and b = " + b);
-//
-//		a = a + b;
-//		b = a.substring(0, (a.length() - b.length()));
-//		a = a.substring(b.length());
-//		System.out.println("Strings after swap: a = " + a + " and b = " + b);
+		String a = "Hello";
+		String b = "World";
+
+		System.out.println("Strings before swap: a = " + a + " and b = " + b);
+
+		a = a + b;
+		b = a.substring(0, (a.length() - b.length()));
+		a = a.substring(b.length());
+		System.out.println("Strings after swap: a = " + a + " and b = " + b);
+		
+		System.out.println("*******************************");
 
 //		Find count of each word from String   // Q Find count of each element using Java 8
 
